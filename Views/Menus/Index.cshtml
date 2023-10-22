@@ -1,0 +1,39 @@
+﻿@model List<Depuntzak_V2.Models.Product>
+
+<div class="container">
+    <h1 class="display-4 text-center">Menu</h1>
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                    @if (product.Name == "Frietspeciaal")
+                    {
+                        <img src="~/images/Frietspeciaal.jpg" alt="@product.Name" class="card-img-top">
+                    }
+                    else if (product.Name == "Friet Oorlog")
+                    {
+                        <img src="~/images/Frietoorlog.jpg" alt="@product.Name" class="card-img-top">
+                    }
+                    else if (product.Name == "Kaas Kroket")
+                    {
+                        <img src="~/images/Kaaskroket.jpg" alt="@product.Name" class="card-img-top">
+                    }
+                    else if (product.Name == "Kroket")
+                    {
+                        <img src="~/images/Kroket.jpg" alt="@product.Name" class="card-img-top">
+                    }
+
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">Prijs: €@product.Price</p>
+                        <a asp-action="AddToCart" asp-route-productId="@product.Id" class="btn btn-primary">Voeg toe aan winkelmandje</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<a asp-action="ViewCart" class="btn btn-primary">Bekijk Winkelmandje</a>
